@@ -18,7 +18,7 @@ public class Person {
     private Timestamp since;
 
     public void updateStatus(List<String> statuses) {
-        int random = new Random().nextInt(statuses.size() - 1);
+        int random = new Random().nextInt(statuses.size());
 
         String temp = status;
         status = statuses.get(random);
