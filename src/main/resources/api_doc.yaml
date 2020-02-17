@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Test task API doc
+paths:
+  /check/info:
+    get:
+      responses:
+        '200':
+          description: Information about data on current app instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Info'
+  /check/{name}:
+    get:
+      parameters:
+        - name: name
+          in: path
+          description: one of names from running options
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Information about person with requested name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+
+components:
+  schemas:
+    Person:
+      type: object
+      required:
+        - name
+        - status
+        - since
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+        since:
+          type: string
+          format: date-time
+    Info:
+      type: object
+      required:
+        - default_status
+        - persons
+        - running_port
+        - statuses
+      properties:
+        default_status:
+          type: string
+        persons:
+          type: array
+          items:
+            $ref: "#/components/schemas/Person"
+        running_port:
+          type: integer
+        statuses:
+          type: array
+          items:
+            type: string

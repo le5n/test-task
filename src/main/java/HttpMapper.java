@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class HttpMapper extends HttpApp {
     private final String CONTEXT_PATH = "check";
-    private final String HELP_PATH = "help";
+    private final String INFO_PATH = "info";
 
     private final Map<String, Person> persons;
     private final List<String> statuses;
@@ -30,7 +30,7 @@ public class HttpMapper extends HttpApp {
                         .collect(Collectors.toList());
 
         return concat(
-                path(PathMatchers.segment(CONTEXT_PATH).slash(HELP_PATH), () -> getMappingDefault()),
+                path(PathMatchers.segment(CONTEXT_PATH).slash(INFO_PATH), () -> getMappingInfo()),
                 JavaConverters.asScalaBuffer(routes).toSeq()
         );
     }
@@ -40,7 +40,7 @@ public class HttpMapper extends HttpApp {
                 completeOK(person, Jackson.marshaller()));
     }
 
-    private Route getMappingDefault() {
+    private Route getMappingInfo() {
         return get(() ->
                 completeOK(new InfoEntity(persons, statuses, port, defaultStatus), Jackson.marshaller()));
     }

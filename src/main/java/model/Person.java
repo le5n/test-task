@@ -1,6 +1,6 @@
 package model;
 
-import akka.actor.FSM;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -15,6 +15,7 @@ import java.util.Random;
 public class Person {
     private String name;
     private volatile String status;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MMM-dd HH:mm:ss z")
     private Timestamp since;
 
     public void updateStatus(List<String> statuses) {
