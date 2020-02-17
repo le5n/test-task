@@ -9,8 +9,8 @@ Order of params can be random, amount of names and statuses doesn't have to corr
 ##### Notes #####
 
 * Validation of console params is not full as it's not in requirements
-* At least one param should be passed by "-n" and "-s" options
-* If port value is not passed server will run on 8080 by default 
+* All startup options are required
+* For "-n" and "-s" param must be separated only by comma (no spaces)
 * As far as actors logic is not implemented yet, scheduling process is done without akka features
   and might be slightly different from requirements 
 

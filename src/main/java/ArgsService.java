@@ -1,5 +1,4 @@
 import lombok.AllArgsConstructor;
-import model.InfoEntity;
 import model.Person;
 
 import java.sql.Timestamp;
@@ -47,8 +46,12 @@ public class ArgsService {
 
 
     private List<String> getByOption(StartupOptions option) {
-        String namesString = startupOptions.get(startupOptions.indexOf(option.getParam()) + 1);
+        int indexOfParam = startupOptions.indexOf(option.getParam());
 
+        if (indexOfParam == -1) {
+            throw new RuntimeException("Parameter " + option + " is required but was not provided");
+        }
+        String namesString = startupOptions.get(indexOfParam + 1);
         return Arrays.asList(namesString.split("\\s*,\\s*"));
     }
 }
