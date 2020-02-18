@@ -15,7 +15,7 @@ import java.util.Random;
 public class Person {
     private String name;
     private volatile String status;
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MMM-dd HH:mm:ss z")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MMM-dd HH:mm:ss z")
     private Timestamp since;
 
     public void updateStatus(List<String> statuses) {

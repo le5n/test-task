@@ -10,16 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @AllArgsConstructor
 public class ArgsService {
-    private final int DEFAULT_RUNNING_PORT = 8080;
     private Integer defaultStatusIndex;
     private List<String> startupOptions;
 
     public int getPort() {
         String port = getByOption(StartupOptions.PORT).get(0);
 
-        if (port == null) {
-            return DEFAULT_RUNNING_PORT;
-        }
         return Integer.parseInt(port);
     }
 
