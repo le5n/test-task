@@ -14,7 +14,7 @@ import java.util.Random;
 @AllArgsConstructor
 public class Person {
     private String name;
-    private volatile String status;
+    private String status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MMM-dd HH:mm:ss z")
     private Timestamp since;
 
